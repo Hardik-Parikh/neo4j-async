@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.acme.grpc";
+
+package hello;
+
+service HelloGrpcAsync {
+    rpc AsyncSayHello (HelloRequest) returns (HelloReply) {}
+}
+
+service HelloGrpcSync {
+    rpc SyncSayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+    int32 querySleepTime = 1;
+}
+
+message HelloReply {
+    repeated Fruit fruits = 1;
+}
+
+message Fruit {
+    int64 id = 1;
+    string name = 2;
+}
